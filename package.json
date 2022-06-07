@@ -1,0 +1,26 @@
+{
+  "name": "openssh",
+  "version": "1.0.3",
+  "description": "Simple Remote terminal connection",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.27.2"
+  },
+  "keywords": [
+    "terminal",
+    "vds",
+    "vps",
+    "terminal",
+    "remote",
+    "remote terminal",
+    "remote-terminal",
+    "simple remote terminal",
+    "openssh"
+  ],
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@kubilaytr",
+  "license": "MIT"
+}
