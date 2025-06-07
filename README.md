@@ -1,33 +1,59 @@
-# Openssh
-Version: **openssh@1.0.5**
-Module owner: **kubi#5443**
-## Informations
-**Help:** [Help server](https://discord.gg/4Xpwwz6pgN)
-### Use of
+# 🔐 Openssh
 
-## How open a server ?
-```js
-//npm i express openssh
+## 📥 Installation
+- `npm i openssh` 📦 
+- `yarn add openssh` 🧶
+- `pnpm add openssh` 🚀
 
-const express = require('express')
-app = express()
-server = app.listen(42215)
-require('openssh')(server,{
-"password":"password123",
-"console": false //console.log usage?
-})
+
+## ⚡ Features
+- Simple remote terminal connection
+- Password protection
+- Easy to implement
+- Works with Express
+
+## 🚀 Setting Up a Server
+
+#### Step 1: Install the required packages
+```bash
+npm i express openssh
 ```
-## How open a Client ?
+
+#### Step 2: Create and configure your server
 ```js
-//npm i ansi-colors@4.1.3 readline@1.3.0 socket.io-client@4.5.1 latinize@0.5.0
+const express = require('express')
+const app = express()
+const server = app.listen(42215)
+
+require('openssh')(server, {
+  "password": "password123", // Change this to something secure
+  "console": false // Set to true to disable console.log messages
+})
+
+console.log("Server running on port 42215! 🔥")
+```
+
+## 👨‍💻 Connecting with a Client
+
+### Client Setup:
+#### First, install these packages
+```bash
+npm i ansi-colors@4.1.3 readline@1.3.0 socket.io-client@4.5.1 latinize@0.5.0
+```
+
+#### Then run this file to connect to your server
+```js
 var settings = {}
 var cdp = "."
+
+// Command line login option
 if(process.argv[2] == "-login" && process.argv[3].split("@").length == 2){
-settings.password = process.argv[3].split("@")[1]
-settings.url = process.argv[3].split("@")[0]  
-if(process.argv[4] == "-usecd") settings.usecd = true
-start()
-}else{
+  settings.password = process.argv[3].split("@")[1]
+  settings.url = process.argv[3].split("@")[0]  
+  if(process.argv[4] == "-usecd") settings.usecd = true
+  start()
+} else {
+  // Interactive login
   var readline = require('readline')
   const c = require('ansi-colors')
   const rl = readline.createInterface({input: process.stdin,output: process.stdout})
@@ -108,5 +134,3 @@ function start(){
 ```
 ##### Openssh
 - ```npm i openssh```
-
-##### You get error [Come to our help server](https://discord.gg/4Xpwwz6pgN)
