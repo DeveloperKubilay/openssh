@@ -46,30 +46,28 @@ npm i ansi-colors@4.1.3 readline@1.3.0 socket.io-client@4.5.1 latinize@0.5.0
 var settings = {}
 var cdp = "."
 
-// Command line login option
 if(process.argv[2] == "-login" && process.argv[3].split("@").length == 2){
   settings.password = process.argv[3].split("@")[1]
   settings.url = process.argv[3].split("@")[0]  
-  if(process.argv[4] == "-usecd") settings.usecd = true
-  start()
+  settings.usecd = true
+  if(process.argv[4] == "-dusecd") settings.usecd = false
+start()
 } else {
-  // Interactive login
-  var readline = require('readline')
-  const c = require('ansi-colors')
-  const rl = readline.createInterface({input: process.stdin,output: process.stdout})
-  rl.question(c.blue('URL: '), (username) => {
+var readline = require('readline')
+const c = require('ansi-colors')
+const rl = readline.createInterface({input: process.stdin,output: process.stdout})
+rl.question(c.blue('URL: '), (username) => {
     rl.question(c.blue('Password: '), (password) => {
-      rl.question(c.yellow('If he wants to use usecd, type 1 otherwise press enter: '), (cd) => {
         settings = {
-          url: username,
-          password: password,
-          usecd: cd == "1"
+            url: username,
+            password: password,
+            usecd: true
         }
         console.log("\n")
+        rl.close()
         start()
-      })
     })
-  })
+})
 }
 
 
