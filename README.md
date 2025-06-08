@@ -3,8 +3,8 @@
 ## 📥 Installation
 - `npm i openssh` 📦 
 - `yarn add openssh` 🧶
-- `pnpm add openssh` 🚀
 
+![openssh](https://raw.githubusercontent.com/DeveloperKubilay/openssh/refs/heads/main/image.gif)
 
 ## ⚡ Features
 - Simple remote terminal connection
