@@ -1,6 +1,6 @@
 {
   "name": "openssh",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Simple Remote terminal connection",
   "main": "index.js",
   "dependencies": {
