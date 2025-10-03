@@ -1,7 +1,8 @@
 # 🔐 Openssh
 
 ## 📥 Installation
-- `npm i openssh` 📦 
+- `npm i -g openssh` 📦 (Global installation)
+- `npm i openssh` 📦 (Local installation)
 - `yarn add openssh` 🧶
 
 ![openssh](https://raw.githubusercontent.com/DeveloperKubilay/openssh/refs/heads/main/image.gif)
@@ -11,8 +12,34 @@
 - Password protection
 - Easy to implement
 - Works with Express
+- Global CLI commands
 
-## 🚀 Setting Up a Server
+## 🚀 Global CLI Usage (Recommended)
+
+### Installation:
+```bash
+npm i -g openssh
+```
+
+### Start server:
+```bash
+# Interactive mode
+openssh serve
+
+# Direct mode  
+openssh serve 90@mypassword
+```
+
+### Client connection:
+```bash
+# CD protected (default)
+openssh localhost:42215@password123
+
+# CD unprotected
+openssh localhost:42215@password123 -dusecd
+```
+
+## 🚀 Programmatic Usage
 
 #### Step 1: Install the required packages
 ```bash
@@ -33,7 +60,7 @@ require('openssh')(server, {
 console.log("Server running on port 42215! 🔥")
 ```
 
-## 👨‍💻 Connecting with a Client
+## 👨‍💻 Manual Client Setup (Legacy method)
 
 ### Client Setup:
 #### First, install these packages
