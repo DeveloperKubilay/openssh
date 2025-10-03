@@ -1,12 +1,21 @@
 var settings = {}
 var cdp = "."
 
+// CLI'dan çağrıldığında
+function startWithSettings(userSettings) {
+  settings = userSettings
+  start()
+}
+
 if(process.argv[2] == "-login" && process.argv[3].split("@").length == 2){
   settings.password = process.argv[3].split("@")[1]
   settings.url = process.argv[3].split("@")[0]  
   settings.usecd = true
   if(process.argv[4] == "-dusecd") settings.usecd = false
 start()
+} else if (typeof module !== 'undefined' && module.exports) {
+  // Module olarak kullanılıyorsa
+  module.exports = { start: startWithSettings }
 } else {
 var readline = require('readline')
 const c = require('ansi-colors')
@@ -31,7 +40,7 @@ function start(){
   latinize = require('latinize')
   readline = require('readline')
   var io = require('socket.io-client')(settings.url)
-  console.log(c.yellow('Connecting to server...'))
+  console.log(c.yellow('🔗 Connecting to server...'))
   io.emit("openssh",{password:settings.password,type:2,date:Date.now()});
   const rl = readline.createInterface({input: process.stdin,output: process.stdout})
   prefix = c.blue('@Openssh >: ');
@@ -63,7 +72,7 @@ function start(){
     rl.prompt();
    }
    if(msg.type === 4){
-    if(msg.console == 1) console.log("\n"+c.yellow("If you want to close the program, type exit!"))
+    if(msg.console == 1) console.log("\n"+c.yellow("To close the program, type exit!"))
     rl.prompt();
    }
    if(msg.type === 1) console.log(latinize(msg.console))
